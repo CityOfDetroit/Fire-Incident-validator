@@ -1,0 +1,11 @@
+[
+    {
+        "incidentkey": "_5C50UBW6W",
+        "succeeded": true,
+        "failed_validations": [
+            {
+                "rule": "zip code length"
+            }
+        ]
+    }
+]

@@ -1,0 +1,93 @@
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+.btn.filter-button{
+  background-color: #9fD5B3;
+}
+.container{
+  padding-top: 1%;
+}
+.filter-btn{
+  border: 3px;
+  padding-top: 48px;
+}
+.padding-top{
+  padding-top: 25px;
+}
+.input-list-group{
+  display: inline;
+}
+.input-list{
+  display:block;
+}
+input{
+  Padding: 6px 12px
+}
+Label{
+  font-family: Montserrat;
+
+}
+
+body > section > div > div.card-header.shadow.p-3.mb-5.rounded{
+  background-color: #9fD5B3;
+}
+.container-width {
+  height: 150px;
+  background-color: #004445
+}
+.label {
+  color: white;
+}
+col {
+  padding-top: 5%;
+}
+
+#incidentsTable tr {
+  cursor: pointer;
+}
+
+.selected-incident {
+  display: none;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 0 4px 4px 0;
+  background-color: #ffffff;
+  margin: 30px;
+  padding: 0px !important;
+  padding-bottom: 10px !important;
+}
+
+.selected-incident h2 {
+  color: #e94c4c;
+}
+.selected-incident .header-section {
+  padding-left: 40px;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.14);
+  border-radius: 2px;
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.selected-incident .header-section > div:first-child {
+  color: #807f7f;
+  padding-bottom: 20px;
+}
+
+.selected-incident .errors-container {
+  margin-top: 10px;
+}
+
+.selected-incident .errors-container .validation-error {
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.14);
+  border-radius: 2px;
+  border: 1px solid #dc8787;
+  background-color: #ffffff;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px;
+}
