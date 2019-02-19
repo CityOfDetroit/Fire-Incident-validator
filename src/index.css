@@ -37,7 +37,7 @@ body > section > div > div.card-header.shadow.p-3.mb-5.rounded{
   background-color: #9fD5B3;
 }
 .container-width {
-  height: 150px;
+  height: auto;
   background-color: #004445
 }
 .label {
