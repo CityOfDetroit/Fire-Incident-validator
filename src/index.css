@@ -1,6 +1,6 @@
 
 body{
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
 }
 
 h1 {
@@ -33,9 +33,17 @@ input{
 }
 Label{
   font-family: Montserrat;
+  font-weight: bold;
 
 }
+.btn{
+  border-radius: none;
+}
+#goBackBtn{
+  border: 2px solid #004445;
+ padding: 10px;
 
+}
 body > section > div > div.card-header.shadow.p-3.mb-5.rounded{
   background-color: #9fD5B3;
 }

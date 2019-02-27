@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,17 +18,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <title>FireIncidentValidator</title>
 </head>
-
 <body>
   <header>
+    <!-- header container -->
     <div class="container-width">
       <div class="row" style="color:white">
+        <!-- col-12 grid -->
         <div class="col-md-12">
           <div class="row">
+            <!-- main logo -->
             <div class="col-md">
               <a href="#home">
                 <img src="./images/logo-print.png" alt="logo-print" style="width:150px;background-color:white"></a>
             </div>
+            <!-- start date-->
             <div class="col-md">
               <ul style="display:inline">
                 <li class="input-list"><label for="date-start" class="control-label">START DATE</label></li>
@@ -37,6 +39,7 @@
                     data-id="rangePlugin" readonly="readonly"></li>
               </ul>
             </div>
+            <!-- end date-->
             <div class="col-md">
               <ul class="input-list-group">
                 <li class="input-list"> <label for="date-end" class="control-label">END DATE</label></li>
@@ -44,17 +47,20 @@
                     readonly="readonly"></li>
               </ul>
             </div>
+            <!-- incident key -->
             <div class="col-md">
               <ul class="input-list-group">
                 <li class="input-list"><label for="incident-key" class="control-label">INCIDENT KEY</label></li>
                 <li class="input-list"> <input type="text" id="incidentKey"></li>
               </ul>
             </div>
+            <!-- filter button for results to datatable -->
             <div class="col-md-1">
               <div class="input-group inputgroup-btn">
                 <button type="button" class="btn btn-default filter-button">FILTER</button>
               </div>
             </div>
+            <!-- reset button for page reload -->
             <div class="col-md-1">
               <div class="input-group inputgroup-btn">
                 <button type="button" class="btn btn-default reset-button">
@@ -65,8 +71,11 @@
           </div>
         </div>
       </div>
+    </div>
   </header>
+<!-- section -->
   <section class="container">
+    <!-- card to display data table -->
     <div class="card">
       <div class="card-header shadow p-3 mb-5 rounded">
         <h2>Incidents</h2>
@@ -81,7 +90,7 @@
           </thead>
         </table>
       </div>
-
+      <!-- individual incident key table -->
       <div class="col-12 container selected-incident">
         <div class="go-back-btn-container">
           <button type="button" class="btn btn-default" id="goBackBtn"><i class="material-icons">
@@ -94,14 +103,11 @@
           </div>
           <h2>List of errors</h2>
         </div>
-
         <div class="errors-container">
         </div>
       </div>
     </div>
-
   </section>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
@@ -111,9 +117,5 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <script src="/app.min.js"></script>
-  <script>
-  
-  </script>
 </body>
-
 </html>
