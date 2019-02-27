@@ -7,6 +7,15 @@
             "failed_validations": [
                 {
                     "rule": "zip code length"
+                },
+                {
+                    "rule": "zip code length"
+                },
+                {
+                    "rule": "zip code length"
+                },
+                {
+                    "rule": "zip code length"
                 }
             ]
         },
@@ -52,5 +61,3 @@
         }
     ]
 }
-incidents.json
-Displaying incidents.json.

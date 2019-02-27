@@ -5,6 +5,15 @@
         "failed_validations": [
             {
                 "rule": "zip code length"
+            },
+            {
+                "rule": "zip code length"
+            },
+            {
+                "rule": "zip code length"
+            },
+            {
+                "rule": "zip code length"
             }
         ]
     }

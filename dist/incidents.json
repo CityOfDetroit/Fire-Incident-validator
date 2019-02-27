@@ -1,51 +1,53 @@
-[
-    {
-        "incidentkey": "_5C50UBW6W",
-        "succeeded": true,
-        "failed_validations": [
-            {
-                "rule": "zip code length"
-            }
-        ]
-    },
-    {
-        "incidentkey": "_5C512I95L",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C513FDPM",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C50I2E4A",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C503793G",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C513Z8SZ",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C516K8OP",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C5189E5Z",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C51A4AK8",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C51DM4NZ",
-        "succeeded": true
-    },
-    {
-        "incidentkey": "_5C51F9G71",
-        "succeeded": true
-    }
-]
+{
+    "incidents": [
+        {
+            "incidentnumber": "_5C50UBW6W",
+            "succeeded": true,
+            "failed_validations": [
+                {
+                    "rule": "zip code length"
+                }
+            ]
+        },
+        {
+            "incidentnumber": "_5C512I95L",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C513FDPM",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C50I2E4A",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C503793G",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C513Z8SZ",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C516K8OP",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C5189E5Z",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C51A4AK8",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C51DM4NZ",
+            "succeeded": true
+        },
+        {
+            "incidentnumber": "_5C51F9G71",
+            "succeeded": true
+        }
+    ]
+}

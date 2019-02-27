@@ -9,10 +9,13 @@ h1 {
 .btn.filter-button{
   background-color: #9fD5B3;
 }
+.btn.reset-button{
+  background-color: #9fD5B3;
+}
 .container{
   padding-top: 1%;
 }
-.filter-btn{
+.inputgroup-btn{
   border: 3px;
   padding-top: 48px;
 }
@@ -45,6 +48,9 @@ body > section > div > div.card-header.shadow.p-3.mb-5.rounded{
 }
 col {
   padding-top: 5%;
+}
+li{
+  display: block;
 }
 
 #incidentsTable tr {
@@ -90,4 +96,19 @@ col {
   font-size: 20px;
   font-weight: 700;
   margin: 10px;
+}
+
+#goBackBtn {
+  display: none;
+}
+
+.go-back-btn-container {
+  position: absolute;
+  top: -53px;
+  left: 38px;
+}
+
+.go-back-btn-container #goBackBtn i {
+  top: 5px;
+  position: relative;
 }

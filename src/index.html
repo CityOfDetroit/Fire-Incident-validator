@@ -5,19 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="shortcut icon"  href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
-<link rel="manifest" href="./images/manifest.json">
-<meta name="msapplication-TileImage" content="./images/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+  <link rel="manifest" href="./images/manifest.json">
+  <meta name="msapplication-TileImage" content="./images/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <title>FireDepartment</title>
+  <title>FireIncidentValidator</title>
 </head>
 
 <body>
@@ -33,61 +33,74 @@
             <div class="col-md">
               <ul style="display:inline">
                 <li class="input-list"><label for="date-start" class="control-label">START DATE</label></li>
-                <li  class="input-list">  <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="rangePlugin"
-                  readonly="readonly"></li>
-                </ul>
-            </div>
-            <div class="col-md">
-              <ul class="input-list-group">
-                <li  class="input-list" onclick="disable()">  <label for="date-end" class="control-label">END DATE</label></li>
-                <li  class="input-list"> <input onclick type="text" placeholder="Select Date.." id="secondRangeInput"  readonly="readonly"></li>
+                <li class="input-list"> <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."
+                    data-id="rangePlugin" readonly="readonly"></li>
               </ul>
             </div>
             <div class="col-md">
               <ul class="input-list-group">
-                <li  class="input-list"><label for="incident-key" class="control-label">INCIDENT KEY</label></li>
-                <li  class="input-list"> <input type="text" id="incidentKey"></li>
+                <li class="input-list"> <label for="date-end" class="control-label">END DATE</label></li>
+                <li class="input-list"> <input onclick type="text" placeholder="Select Date.." id="secondRangeInput"
+                    readonly="readonly"></li>
               </ul>
             </div>
             <div class="col-md">
-              <div class="input-group filter-btn ">
+              <ul class="input-list-group">
+                <li class="input-list"><label for="incident-key" class="control-label">INCIDENT KEY</label></li>
+                <li class="input-list"> <input type="text" id="incidentKey"></li>
+              </ul>
+            </div>
+            <div class="col-md-1">
+              <div class="input-group inputgroup-btn">
                 <button type="button" class="btn btn-default filter-button">FILTER</button>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="input-group inputgroup-btn">
+                <button type="button" class="btn btn-default reset-button">
+                  RESET
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </header>
-      <section class="container">
-        <div class="card">
-            <div class="card-header shadow p-3 mb-5 rounded">
-                <h2>Incidents</h2>
-            </div>
-            <div class="col-12 incidents-table-container">
-              <table id="incidentsTable" class="display" style="width:100%">
-                <thead>
-                  <tr>
-                    <th>Incident Key</th>
-                    <th>List Of Errors</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
+  </header>
+  <section class="container">
+    <div class="card">
+      <div class="card-header shadow p-3 mb-5 rounded">
+        <h2>Incidents</h2>
+      </div>
+      <div class="col-12 incidents-table-container">
+        <table id="incidentsTable" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>Incident Key</th>
+              <th>List Of Errors</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
 
-            <div class="col-12 container selected-incident">
-              <div class="header-section">
-                  <div>
-                      <span>Incident Number: </span><span id="selectedIncidentKey"></span>
-                  </div>
-                  <h2>List of errors</h2>
-              </div>
-
-              <div class="errors-container">
-              </div>
-            </div>
+      <div class="col-12 container selected-incident">
+        <div class="go-back-btn-container">
+          <button type="button" class="btn btn-default" id="goBackBtn"><i class="material-icons">
+              arrow_back_ios
+            </i>Go Back</button>
         </div>
-      
-      </section>
+        <div class="header-section">
+          <div>
+            <span>Incident Number: </span><span id="selectedIncidentKey"></span>
+          </div>
+          <h2>List of errors</h2>
+        </div>
+
+        <div class="errors-container">
+        </div>
+      </div>
+    </div>
+
+  </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -99,9 +112,7 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <script src="/app.min.js"></script>
   <script>
-    function disable(){
-      document.getElementById("incidentKey").disable = true;
-    }
+  
   </script>
 </body>
 
