@@ -4,9 +4,9 @@
     let incidentsTable, dateRangeField;
 
     initTable();
-//Daterange 
+
     dateRangeField = flatpickr($('.flatpickr')[0], {
-      "plugins": [new rangePlugin({ input: "#secondRangeInput" })]
+      "plugins": [new rangePlugin({ input: "#endDate" })]
     });
 
     $('#goBackBtn').on('click', function () {
@@ -14,27 +14,49 @@
       $('.incidents-table-container').show();
     });
 
+    $('#startDate, #endDate').on('change keyup', function (event) {
+      if (event.target.value) {
+        $("#incidentKey").prop('disabled', true);
+        // $("input").prop('disabled', false);
+      } else {
+        $("#incidentKey").prop('disabled', false);
+      }
+    });
+
+    $('#incidentKey').on('change keyup', function (event) {
+      if (event.target.value) {
+        $('#startDate, #endDate').prop('disabled', true);
+        // $("input").prop('disabled', false);
+      } else {
+        $('#startDate, #endDate').prop('disabled', false);
+      }
+    });
+
+    $('.clear-button').on('click', function() {
+      $('#startDate, #endDate, #incidentKey').val('').prop('disabled', false);
+    });
+
     $('.filter-button').on('click', function () {
       const incidentKey = $('#incidentKey').val();
       if (!dateRangeField.selectedDates && dateRangeField.selectedDates.length > 0 && !incidentKey) {
         return;
       }
-      $(".reset-button").on('click', function(){
-        location.reload();
-      })
+
       let url = '/incidents.json';
-      //let url = 'http://10.194.74.118:8000/incidents/date_range/'
+      // let url = 'http://10.194.74.118:8000/incidents/date_range/'
       let params;
       if (dateRangeField.selectedDates && dateRangeField.selectedDates.length > 0) {
         params = {
           startDate: dateRangeField.selectedDates[0],
           endDate: dateRangeField.selectedDates[1]
         }
-     //   url += getDateParam(params.startDate) + '/' + getDateParam(params.endDate);
+        // url += getDateParam(params.startDate) + '/' + getDateParam(params.endDate);
       } else {
-     //  url = 'http://10.194.74.118:8000/incidents/' + incidentKey + '/';
-       url = '/incidentsByKey.json';
+        // url = 'http://10.194.74.118:8000/incidents/' + incidentKey;
+        url = '/incidentsByKey.json';
       }
+
+      $('.service-error').hide();
       $.ajax({
         method: 'GET',
         url: url,
@@ -51,7 +73,7 @@
           $('.incidents-table-container, #goBackBtn').show();
         }
       }).fail(function (jqXHR, textStatus, errorThrown) {
-        // needs to implement if it fails
+        $('.service-error').show();
       });
     });
 
@@ -63,19 +85,24 @@
     function setIncidentValidationDetails(data) {
       $('.errors-container').html('');
       var errors = '';
-      data.failed_validations && data.failed_validations.forEach(error => {
-        errors += '<div class="validation-error">' + error.rule + '</div>';
-      });
-      $('.errors-container').html(errors);
+      if (data.failed_validations && data.failed_validations.length) {
+        data.failed_validations.forEach(error => {
+          errors += '<div class="validation-error">' + error.rule + '</div>';
+        });
+        $('.errors-container').html(errors);
+        $('.selected-incident').removeClass('no-validation-errors');
+      } else {
+        $('.selected-incident').addClass('no-validation-errors');
+      }
       $('#selectedIncidentKey').text(data.incidentnumber);
-      $('.selected-incident').show();
+      $('.selected-incident, #goBackBtn').show();
       $('.incidents-table-container').hide();
     }
 
     function getDateParam(date) {
       let year = date.getUTCFullYear();
-      let month = ('0' + date.getUTCMonth()).slice(-2);
-      let dt = ('0' + date.getUTCDate()).slice(-2);
+      let month = ('0' + (date.getMonth() + 1)).slice(-2);
+      let dt = ('0' + date.getDate()).slice(-2);
       return `${year}${month}${dt}`
     }
 
@@ -106,4 +133,4 @@
       });
     }
   });
-})()
+})();

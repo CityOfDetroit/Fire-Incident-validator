@@ -5,6 +5,7 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var webserver = require('gulp-webserver');
+var  minifyCSS = require('gulp-minify-css');
 // var imagemin = require('gulp-imagemin');
 
 var bases = {
@@ -26,7 +27,20 @@ gulp.task('clean', function() {
  return gulp.src(bases.dist)
  .pipe(clean());
 });
-
+gulp.task('css', function() {
+    gulp.src([
+            'node_modules/bootstrap/dist/css/bootstrap.css',
+            'src/css/**/*.css'
+        ])
+        .pipe(minifyCSS())
+        .pipe(concat('index.css'))
+        .pipe(gulp.dest('web/dist/css'));
+});
+gulp.task('js', function() {
+    return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/tether/dist/js/tether.min.js', 'node_modules/moment/moment.min.js'])
+        .pipe(gulp.dest("src/js"))
+        .pipe(browserSync.stream());
+});
 // Process scripts and concatenate them into one output file
 gulp.task('scripts', gulp.series(function(done) {
  gulp.src(paths.scripts, {cwd: bases.app})
