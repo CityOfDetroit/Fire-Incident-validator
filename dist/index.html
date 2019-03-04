@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,67 +17,66 @@
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <title>FireIncidentValidator</title>
+  <title>FireDepartment</title>
 </head>
+
 <body>
   <header>
-    <!-- header container -->
     <div class="container-width">
       <div class="row" style="color:white">
-        <!-- col-12 grid -->
         <div class="col-md-12">
           <div class="row">
-            <!-- main logo -->
             <div class="col-md">
               <a href="#home">
                 <img src="./images/logo-print.png" alt="logo-print" style="width:150px;background-color:white"></a>
             </div>
-            <!-- start date-->
             <div class="col-md">
               <ul style="display:inline">
                 <li class="input-list"><label for="date-start" class="control-label">START DATE</label></li>
-                <li class="input-list"> <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."
-                    data-id="rangePlugin" readonly="readonly"></li>
+                <li class="input-list">
+                  <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="rangePlugin" id="startDate"
+                    readonly="readonly">
+                </li>
               </ul>
             </div>
-            <!-- end date-->
             <div class="col-md">
               <ul class="input-list-group">
-                <li class="input-list"> <label for="date-end" class="control-label">END DATE</label></li>
-                <li class="input-list"> <input onclick type="text" placeholder="Select Date.." id="secondRangeInput"
-                    readonly="readonly"></li>
+                <li class="input-list" onclick="disable()"> <label for="date-end" class="control-label">END DATE</label></li>
+                <li class="input-list">
+                  <input onclick type="text" placeholder="Select Date.." id="endDate" readonly="readonly">
+                </li>
               </ul>
             </div>
-            <!-- incident key -->
             <div class="col-md">
               <ul class="input-list-group">
-                <li class="input-list"><label for="incident-key" class="control-label">INCIDENT KEY</label></li>
-                <li class="input-list"> <input type="text" id="incidentKey"></li>
+                <li class="input-list">
+                  <label for="incident-key" class="control-label">INCIDENT KEY</label>
+                </li>
+                <li class="input-list">
+                  <input type="text" id="incidentKey">
+                </li>
               </ul>
             </div>
-            <!-- filter button for results to datatable -->
             <div class="col-md-1">
-              <div class="input-group inputgroup-btn">
+              <div class="input-group filter-btn">
                 <button type="button" class="btn btn-default filter-button">FILTER</button>
               </div>
+              
             </div>
-            <!-- reset button for page reload -->
             <div class="col-md-1">
-              <div class="input-group inputgroup-btn">
-                <button type="button" class="btn btn-default reset-button">
-                  RESET
-                </button>
-              </div>
+            <div class="input-group filter-btn">
+              <button type="button" class="btn btn-default clear-button">RESET</button>
             </div>
+          </div>
           </div>
         </div>
       </div>
-    </div>
   </header>
-<!-- section -->
   <section class="container">
-    <!-- card to display data table -->
     <div class="card">
+      <div class="alert alert-danger service-error" role="alert">
+        <strong>Error! </strong>An error occurred while getting incident details.
+      </div>
       <div class="card-header shadow p-3 mb-5 rounded">
         <h2>Incidents</h2>
       </div>
@@ -90,7 +90,7 @@
           </thead>
         </table>
       </div>
-      <!-- individual incident key table -->
+
       <div class="col-12 container selected-incident">
         <div class="go-back-btn-container">
           <button type="button" class="btn btn-default" id="goBackBtn"><i class="material-icons">
@@ -102,12 +102,16 @@
             <span>Incident Number: </span><span id="selectedIncidentKey"></span>
           </div>
           <h2>List of errors</h2>
+          <span class="no-errors-message">No errors found for this incident.</span>
         </div>
+
         <div class="errors-container">
         </div>
       </div>
     </div>
+
   </section>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
@@ -117,5 +121,11 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <script src="/app.min.js"></script>
+  <script>
+    function disable() {
+      document.getElementById("incidentKey").disable = true;
+    }
+  </script>
 </body>
+
 </html>
