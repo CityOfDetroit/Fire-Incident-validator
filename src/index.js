@@ -34,6 +34,7 @@
 
     $('.clear-button').on('click', function() {
       $('#startDate, #endDate, #incidentKey').val('').prop('disabled', false);
+      location.reload();
     });
 
     $('.filter-button').on('click', function () {
@@ -42,18 +43,18 @@
         return;
       }
 
-      let url = '/incidents.json';
-      // let url = 'http://10.194.74.118:8000/incidents/date_range/'
+      //let url = '/incidents.json';
+     let url = 'http://10.194.74.118:8000/incidents/date_range/'
       let params;
       if (dateRangeField.selectedDates && dateRangeField.selectedDates.length > 0) {
         params = {
           startDate: dateRangeField.selectedDates[0],
           endDate: dateRangeField.selectedDates[1]
         }
-        // url += getDateParam(params.startDate) + '/' + getDateParam(params.endDate);
+        url += getDateParam(params.startDate) + '/' + getDateParam(params.endDate)  + '/';
       } else {
-        // url = 'http://10.194.74.118:8000/incidents/' + incidentKey;
-        url = '/incidentsByKey.json';
+         url = 'http://10.194.74.118:8000/incidents/' + incidentKey  + '/';
+       // url = '/incidentsByKey.json';
       }
 
       $('.service-error').hide();
@@ -62,7 +63,9 @@
         url: url,
         dataType: 'json',
         contentType: 'application/json',
-        processData: false
+        processData: false,
+        success: AjaxSucceeded,
+        error: AjaxFailed
       }).done(function (result) {
         if (incidentKey) {
           setIncidentValidationDetails(result.incidents[0]);
@@ -76,7 +79,13 @@
         $('.service-error').show();
       });
     });
-
+//error messages from server..
+function AjaxFailed(result){
+  $("#error-message").show();
+}
+function AjaxSucceeded(result){
+  $("#error-message").hide();
+}
     $('.dataTable').on('click', function () {
       var data = incidentsTable.row($(event.target).parents('tr')).data();
       setIncidentValidationDetails(data);

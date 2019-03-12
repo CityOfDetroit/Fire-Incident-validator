@@ -32,8 +32,11 @@ Label{
   font-family: Montserrat;
 
 }
+/* #datatable-container{
+  display: none;
+} */
 
-body > section > div > div.card-header.shadow.p-3.mb-5.rounded{
+body > main > div > div.card-header.shadow.p-3.mb-5.rounded{
   background-color: #9fD5B3;
 }
 .container-width {

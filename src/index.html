@@ -17,12 +17,11 @@
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <title>FireDepartment</title>
+  <title>Fire Incident Validator</title>
 </head>
-
 <body>
   <header>
-    <div class="container-width">
+    <div class="container-width shadow rounded">
       <div class="row" style="color:white">
         <div class="col-md-12">
           <div class="row">
@@ -41,7 +40,7 @@
             </div>
             <div class="col-md">
               <ul class="input-list-group">
-                <li class="input-list" onclick="disable()"> <label for="date-end" class="control-label">END DATE</label></li>
+                <li class="input-list"> <label for="date-end" class="control-label">END DATE</label></li>
                 <li class="input-list">
                   <input onclick type="text" placeholder="Select Date.." id="endDate" readonly="readonly">
                 </li>
@@ -72,13 +71,15 @@
         </div>
       </div>
   </header>
-  <section class="container">
-    <div class="card">
-      <div class="alert alert-danger service-error" role="alert">
-        <strong>Error! </strong>An error occurred while getting incident details.
-      </div>
+  <section>
+    <div class="alert alert-danger service-error" role="alert">
+      <strong>Error! </strong>Please enter valid date values or incident key.
+    </div>
+  </section>
+  <main class="container">
+    <div class="card" id="datatable-container">
       <div class="card-header shadow p-3 mb-5 rounded">
-        <h2>Incidents</h2>
+        <h4>INCIDENTS</h4>
       </div>
       <div class="col-12 incidents-table-container">
         <table id="incidentsTable" class="display" style="width:100%">
@@ -110,7 +111,7 @@
       </div>
     </div>
 
-  </section>
+  </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -121,11 +122,6 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <script src="/app.min.js"></script>
-  <script>
-    function disable() {
-      document.getElementById("incidentKey").disable = true;
-    }
-  </script>
 </body>
 
 </html>
