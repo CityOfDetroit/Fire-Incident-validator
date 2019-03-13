@@ -15,7 +15,7 @@ var bases = {
 
 var paths = {
     scripts: ['src/**/*.js'],
-    libs: ['src/libs/jquery/dist/jquery.js', 'scripts/libs/underscore/underscore.js', 'scripts/backbone/backbone.js'],
+    libs: ['src/libs/jquery/dist/jquery.js',],
     styles: ['src/**/*.css'],
     html: ['src/index.html'],
     images: ['src/images/**/*'],
@@ -36,8 +36,19 @@ gulp.task('css', function() {
         .pipe(concat('index.css'))
         .pipe(gulp.dest('web/dist/css'));
 });
+// gulp.task('js', function() {
+//     return gulp.src(['node_modules/**/*.js'],
+//                      ['node_modules/**/*/.min.js'],
+//                      {base:'node_modules'})
+//                  .pipe(gulp.dest("src/js"))
+//                  .pipe(browserSync.stream());
+// });
 gulp.task('js', function() {
-    return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/tether/dist/js/tether.min.js', 'node_modules/moment/moment.min.js'])
+    return gulp.src([
+        'node_modules/bootstrap/dist/js/bootstrap.min.js', 
+        'node_modules/jquery/dist/jquery.min.js',
+        'src/**/*.js'
+    ])
         .pipe(gulp.dest("src/js"))
         .pipe(browserSync.stream());
 });
