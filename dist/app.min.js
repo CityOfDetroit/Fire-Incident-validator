@@ -43,7 +43,7 @@
         return;
       }
 
-      //let url = '/incidents.json';
+     // let url = '/incidents.json';
      let url = 'http://10.194.74.118:8000/incidents/date_range/'
       let params;
       if (dateRangeField.selectedDates && dateRangeField.selectedDates.length > 0) {
@@ -51,10 +51,10 @@
           startDate: dateRangeField.selectedDates[0],
           endDate: dateRangeField.selectedDates[1]
         }
-        url += getDateParam(params.startDate) + '/' + getDateParam(params.endDate)  + '/';
+       url += getDateParam(params.startDate) + '/' + getDateParam(params.endDate)  + '/';
       } else {
-         url = 'http://10.194.74.118:8000/incidents/' + incidentKey  + '/';
-       // url = '/incidentsByKey.json';
+        url = 'http://10.194.74.118:8000/incidents/' + incidentKey  + '/';
+  //url = '/incidentsByKey.json';
       }
 
       $('.service-error').hide();
@@ -90,13 +90,26 @@ function AjaxSucceeded(result){
       var data = incidentsTable.row($(event.target).parents('tr')).data();
       setIncidentValidationDetails(data);
     });
-
+  //Add errors to  Individual incident table 
+  //displaying column, description and value.
     function setIncidentValidationDetails(data) {
       $('.errors-container').html('');
       var errors = '';
       if (data.failed_validations && data.failed_validations.length) {
         data.failed_validations.forEach(error => {
-          errors += '<div class="validation-error">' + error.rule + '</div>';
+          errors +=
+           '<ul class="validation-error">' + 
+           '<li>' 
+          + "Type :"+ error.column +
+          '</li>' + 
+          '<li style="color:red">' 
+          +"Current Value :"+ "&nbsp" + error.errors.value + 
+          '</li>' +
+           '<li>' 
+          +"Description :"+ "&nbsp" + error.description + 
+          '</li>' 
+          +'</ul>';
+          console.log("errors.value" + error.errors.value);
         });
         $('.errors-container').html(errors);
         $('.selected-incident').removeClass('no-validation-errors');
@@ -114,7 +127,9 @@ function AjaxSucceeded(result){
       let dt = ('0' + date.getDate()).slice(-2);
       return `${year}${month}${dt}`
     }
-
+  // Add errors to each row of the datatable
+  // maybe just display the type of error for <li>??????
+  // error label to display?????
     function initTable() {
       incidentsTable = $("#incidentsTable").DataTable({
         data: [],
@@ -125,7 +140,8 @@ function AjaxSucceeded(result){
             render: function (data, type, row) {
               let errors = '<ul>';
               data && data.forEach(error => {
-                errors += '<li>' + error.rule + '</li>';
+                errors += '<li>' + error.description +'</li>' ;
+                //+'<li>' + error.description +'</li>' + '<li>' + error.value +'</li>';
               });
               errors += '</ul>';
               return errors;

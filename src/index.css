@@ -6,9 +6,9 @@ body{
 h1 {
   text-align: center;
 }
-/* li{
+li{
   display: block;
-} */
+}
 .btn.filter-button, .btn.clear-button {
   background-color: #9fD5B3;
 }
