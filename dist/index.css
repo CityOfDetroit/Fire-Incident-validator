@@ -6,6 +6,9 @@ body{
 h1 {
   text-align: center;
 }
+/* li{
+  display: block;
+} */
 .btn.filter-button, .btn.clear-button {
   background-color: #9fD5B3;
 }
@@ -35,13 +38,20 @@ Label{
 /* #datatable-container{
   display: none;
 } */
-
+footer {
+  position: fixed;
+  height: auto;
+  bottom: 0;
+  width: 100%;
+  background-color: #F2F2F2;
+  text-align: center;
+}
 body > main > div > div.card-header.shadow.p-3.mb-5.rounded{
   background-color: #9fD5B3;
 }
 .container-width {
   height: auto;
-  background-color: #004445
+  background-color: #004445;
 }
 .label {
   color: white;

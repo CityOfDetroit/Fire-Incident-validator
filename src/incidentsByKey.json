@@ -1,20 +1,32 @@
-[
-    {
-        "incidentkey": "_5C50UBW6W",
-        "succeeded": true,
-        "failed_validations": [
-            {
-                "rule": "zip code length"
-            },
-            {
-                "rule": "zip code length"
-            },
-            {
-                "rule": "zip code length"
-            },
-            {
-                "rule": "zip code length"
-            }
-        ]
-    }
-]
+{
+    "incidents": [
+        {
+            "incidentnumber": 40529,
+            "succeeded": false,
+            "failed_validations": [
+                {
+                    "rule": "zip code length",
+                    "description": "Length of zip code must be 5 characters",
+                    "errors": [
+                        {
+                            "column": "zip",
+                            "value": "48228-2512",
+                            "expression": "len(zip) == 5"
+                        }
+                    ]
+                },
+                {
+                    "rule": "'Invalid' is not a street name",
+                    "description": "'Invalid' can not be the name of the street",
+                    "errors": [
+                        {
+                            "column": "StreetFMT",
+                            "value": "INVALID",
+                            "expression": "StreetFMT != INVALID"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
