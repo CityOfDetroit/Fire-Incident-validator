@@ -14,6 +14,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-material-datetimepicker": "^2.7.3",
     "bootstrap-material-design": "^4.1.1",
+    "datatables": "^1.10.18",
     "flatpickr": "^4.5.2",
     "gulp-minify-css": "^1.2.4",
     "jquery": "^3.3.1",

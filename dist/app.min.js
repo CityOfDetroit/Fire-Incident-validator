@@ -92,34 +92,55 @@ function AjaxSucceeded(result){
     });
   //Add errors to  Individual incident table 
   //displaying column, description and value.
-    function setIncidentValidationDetails(data) {
-      $('.errors-container').html('');
-      var errors = '';
-      if (data.failed_validations && data.failed_validations.length) {
-        data.failed_validations.forEach(error => {
-          errors +=
-           '<ul class="validation-error">' + 
-           '<li>' 
-          + "Type :"+ error.column +
-          '</li>' + 
-          '<li style="color:red">' 
-          +"Current Value :"+ "&nbsp" + error.errors.value + 
-          '</li>' +
-           '<li>' 
-          +"Description :"+ "&nbsp" + error.description + 
-          '</li>' 
-          +'</ul>';
-          console.log("errors.value" + error.errors.value);
-        });
-        $('.errors-container').html(errors);
-        $('.selected-incident').removeClass('no-validation-errors');
-      } else {
-        $('.selected-incident').addClass('no-validation-errors');
-      }
-      $('#selectedIncidentKey').text(data.incidentnumber);
-      $('.selected-incident, #goBackBtn').show();
-      $('.incidents-table-container').hide();
+  function setIncidentValidationDetails(data) {
+    $('.errors-container').html('');
+    var failed_validations = '';
+    if (data.failed_validations && data.failed_validations.length) {
+      data.failed_validations.forEach(validation => {
+        let errors = '';
+        if(validation.errors && validation.errors.length) {
+          errors = '<div> <b>Column : </b> ' + validation.errors[0].column + '<br><b> Value : </b>' + validation.errors[0].value + '</div>';
+        }
+        
+        failed_validations += '<div class="validation-error">' + '<b> Description : </b>' + validation.description + errors + '</div>';
+      });
+      $('.errors-container').html(failed_validations);
+      $('.selected-incident').removeClass('no-validation-errors');
+    } else {
+      $('.selected-incident').addClass('no-validation-errors');
     }
+    $('#selectedIncidentKey').text(data.incidentnumber);
+    $('.selected-incident, #goBackBtn').show();
+    $('.incidents-table-container').hide();
+  }
+    // function setIncidentValidationDetails(data) {
+    //   $('.errors-container').html('');
+    //   var errors = '';
+    //   if (data.failed_validations && data.failed_validations.length) {
+    //     data.failed_validations.forEach(validation => {
+    //       errors =
+    //        '<ul class="validation-error">' + 
+    //        '<li>' 
+    //       + "Type :"+ "&nbsp" + validation.error[0].column +
+    //       '</li>' + 
+    //       '<li style="color:red">' 
+    //       +"Current Value :"+ "&nbsp" + error.value + 
+    //       '</li>' +
+    //        '<li>' 
+    //       +"Description :"+ "&nbsp" + error.description + 
+    //       '</li>' 
+    //       +'</ul>';
+    //       console.log("errors.value" + errors.value);
+    //     });
+    //     $('.errors-container').html(errors);
+    //     $('.selected-incident').removeClass('no-validation-errors');
+    //   } else {
+    //     $('.selected-incident').addClass('no-validation-errors');
+    //   }
+    //   $('#selectedIncidentKey').text(data.incidentnumber);
+    //   $('.selected-incident, #goBackBtn').show();
+    //   $('.incidents-table-container').hide();
+    // }
 
     function getDateParam(date) {
       let year = date.getUTCFullYear();
@@ -127,9 +148,7 @@ function AjaxSucceeded(result){
       let dt = ('0' + date.getDate()).slice(-2);
       return `${year}${month}${dt}`
     }
-  // Add errors to each row of the datatable
-  // maybe just display the type of error for <li>??????
-  // error label to display?????
+  
     function initTable() {
       incidentsTable = $("#incidentsTable").DataTable({
         data: [],
